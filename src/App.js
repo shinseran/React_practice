@@ -9,6 +9,8 @@ function App() {
  let [따봉,따봉변경] = useState(0);
  let posts = '강남고기맛집'; //데이터 바인딩 위한 변수선언
 
+ let [modal,modal변경] =useState(false);//온오프스위치(클릭안하면 안보이고 클릭하면 보이게)
+
  function 제목바꾸기(){
    let newArray= [...글제목];//deepcopy
    newArray[0]='아동코트추천';
@@ -35,16 +37,37 @@ function App() {
         <hr/>
       </div>
       <div className="list">
-        <h3> {글제목[2]} </h3>
+        <h3> {글제목[2]}  </h3>
         <p>10월 28일 발행</p> 
         <hr/>
       </div>
+
+      <button onClick={()=>{modal변경(!modal)}}>버튼</button>
       
-     
+     {
+       modal ===true
+       ? <Modal></Modal>
+       : null
+     }
+  
       
       
     </div>
   );
 }
+
+function Modal(){
+  return(
+    <div className="modal">
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
+
+    </div>
+  )
+
+}
+
+
 
 export default App;
