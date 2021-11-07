@@ -10,6 +10,12 @@ function App() {
  let posts = '강남고기맛집'; //데이터 바인딩 위한 변수선언
 
  let [modal,modal변경] =useState(false);//온오프스위치(클릭안하면 안보이고 클릭하면 보이게)
+  
+ //const 어레이=[2,3,4];
+ 
+ // const 뉴어레이=어레이.map(function(a){
+  // return a*2
+ //})
 
  function 제목바꾸기(){
    let newArray= [...글제목];//deepcopy
@@ -31,19 +37,28 @@ function App() {
         <hr/>
          </div>
         
-       <div className="list">
-        <h3> {글제목[1]} </h3>
-        <p>10월 28일 발행</p> 
-        <hr/>
-      </div>
-      <div className="list">
-        <h3> {글제목[2]}  </h3>
-        <p>10월 28일 발행</p> 
-        <hr/>
-      </div>
+      
 
       <button onClick={()=>{modal변경(!modal)}}>버튼</button>
       
+      { 
+        
+        글제목.map(function(a){
+          return(
+            <div className="list">
+            <h3> {a}<span onClick={ ()=>{따봉변경(따봉 +1)}}>👍</span> {따봉} </h3>
+            <p>10월 28일 발행</p> 
+            <hr/>
+          </div>
+          )
+        })
+      
+      }  
+
+
+
+
+
      {
        modal ===true
        ? <Modal></Modal>
