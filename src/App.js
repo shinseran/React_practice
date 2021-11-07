@@ -30,16 +30,9 @@ function App() {
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      <button onClick={ 제목바꾸기 }>👏</button>
-      <div className="list">
-        <h3> {글제목[0]} <span onClick={ ()=>{따봉변경(따봉 +1)}}>👍</span> {따봉} </h3>
-        <p>10월 28일 발행</p> 
-        <hr/>
-         </div>
-        
       
-
-      <button onClick={()=>{modal변경(!modal)}}>버튼</button>
+      <button onClick={ 제목바꾸기 }>👏</button>
+      
       
       { 
         
@@ -55,13 +48,13 @@ function App() {
       
       }  
 
-
+      <button onClick={()=>{modal변경(!modal)}}>버튼</button> 
 
 
 
      {
        modal ===true
-       ? <Modal></Modal>
+       ? <Modal 글제목={글제목 }></Modal> //자식컴포넌트 < 작명={전송할state}></>
        : null
      }
   
@@ -71,10 +64,10 @@ function App() {
   );
 }
 
-function Modal(){
+function Modal(props){
   return(
     <div className="modal">
-      <h2>제목</h2>
+      <h2>{props.글제목[0]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
 
