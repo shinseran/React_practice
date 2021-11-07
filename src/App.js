@@ -10,7 +10,8 @@ function App() {
  let posts = '강남고기맛집'; //데이터 바인딩 위한 변수선언
 
  let [modal,modal변경] =useState(false);//온오프스위치(클릭안하면 안보이고 클릭하면 보이게)
-  
+ let [누른제목,누른제목변경] = useState(0);
+
  //const 어레이=[2,3,4];
  
  // const 뉴어레이=어레이.map(function(a){
@@ -30,16 +31,16 @@ function App() {
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      
+
       <button onClick={ 제목바꾸기 }>👏</button>
       
       
       { 
         
-        글제목.map(function(a){
+        글제목.map(function(a,i){
           return(
             <div className="list">
-            <h3> {a}<span onClick={ ()=>{따봉변경(따봉 +1)}}>👍</span> {따봉} </h3>
+            <h3  onClick={ ()=>{누른제목변경(i) } }> {a}<span onClick={ ()=>{따봉변경(따봉 +1)}}>👍</span> {따봉} </h3>
             <p>10월 28일 발행</p> 
             <hr/>
           </div>
@@ -48,16 +49,20 @@ function App() {
       
       }  
 
-      <button onClick={()=>{modal변경(!modal)}}>버튼</button> 
+     { /*<button onClick={ ()=>{누른제목변경(0) }} >버튼1</button>
+      <button onClick={ ()=>{누른제목변경(1) }} >버튼2</button>
+      <button onClick={ ()=>{누른제목변경(2) }} >버튼3</button>
+
+    <button onClick={()=>{modal변경(!modal)}}>버튼</button> */}
 
 
 
      {
        modal ===true
-       ? <Modal 글제목={글제목 }></Modal> //자식컴포넌트 < 작명={전송할state}></>
+       ? <Modal 글제목={글제목 } 누른제목={누른제목}></Modal> //자식컴포넌트 < 작명={전송할state}></>
        : null
      }
-  
+     
       
       
     </div>
@@ -67,7 +72,7 @@ function App() {
 function Modal(props){
   return(
     <div className="modal">
-      <h2>{props.글제목[0]}</h2>
+      <h2>{props.글제목[props.누른제목]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
 
