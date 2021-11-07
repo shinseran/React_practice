@@ -12,6 +12,7 @@ function App() {
  let [modal,modal변경] =useState(false);//온오프스위치(클릭안하면 안보이고 클릭하면 보이게)
  let [누른제목,누른제목변경] = useState(0);
  let [입력값,입력값변경]=useState('');
+
  //const 어레이=[2,3,4];
  
  // const 뉴어레이=어레이.map(function(a){
@@ -55,6 +56,17 @@ function App() {
 
     {/*{입력값}  화면에 입력한 값이 나오게 됨
     <input onChange={(e)=>{입력값변경(e.target.value) } }  /> */}
+
+    <div className="publish">
+      <input onChange={ (e)=>{ 입력값변경(e.target.value)} }/>
+      <button onClick={ ()=>{ 
+        const arrayCopy=[...글제목];
+        arrayCopy.unshift(입력값);
+        글제목변경(arrayCopy);
+      }}>저장</button>
+    </div>
+
+
 
 
 
