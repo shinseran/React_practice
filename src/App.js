@@ -60,6 +60,7 @@ function App() {
     <div className="publish">
       <input onChange={ (e)=>{ 입력값변경(e.target.value)} }/>
       <button onClick={ ()=>{ 
+        
         const arrayCopy=[...글제목];
         arrayCopy.unshift(입력값);
         글제목변경(arrayCopy);
